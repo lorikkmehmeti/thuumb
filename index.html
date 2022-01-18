@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="fab">
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ri" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M16.757 3l-2 2H5v14h14V9.243l2-2V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12.757zm3.728-.9L21.9 3.516l-9.192 9.192l-1.412.003l-.002-1.417L20.485 2.1z" fill="currentColor"></path></svg>
+        </button>
+    </div>
+    <div class="modal00">
+        <div class="modalcontainer00">
+            <div class="modalwrapper00">
+                <input type="text" spellcheck="true" placeholder="Write a title for thumbnail">
+                <div style="margin: 10px 0 20px; font-size: 1.6rem;">
+                    <input type="radio" name="theme" value="dark"> Dark
+                    <input type="radio" name="theme" value="light"> Light
+                </div>
+                <div style="margin: 10px 0 20px; font-size: 1.6rem;">
+                    <input type="color" id="head" name="head" style="margin-right: 10px;"><span>Background color for highlight</span>
+                </div>
+                <button id="capture-btn" tabindex="0">Capture</button>
+            </div>
+        </div>
+    </div>
+    <!-- <div style="display: flex; justify-content: center; padding: 20px 0;">
+      
+    </div> -->
+    <div id="image-rendered"></div>
+    <div class="w">
+        <div class="Container">
+        </div>
+    </div>
+
+    <template id="template">
+        <div class="Wrapper">
+            <div class="content-wrapper" id="capture">
+            <div class="top-container">
+                <div class="top--content">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800.09 301" width="200">
+                            <path d="M124.29 71.82L62.14 35.91 0 71.82V35.91L62.15 0l62.15 35.91v35.91z" fill="#a435f0" />
+                            <path
+                            fill="currentColor"
+                                d="M32.56 101.97v79.15c0 20.45 15.26 30.42 29.59 30.42 14.45 0 29.6-10.23 29.6-30.69v-78.88h32.55v81.04c0 18.84-5.92 33.37-17.75 43.34-11.85 9.96-26.64 14.81-44.68 14.81-18.02 0-32.82-4.84-44.38-14.81C5.92 216.39 0 202.4 0 183.81v-81.84zm373.19 98.37l24.18 13.97c-14.75 16.82-34.42 26.58-59.14 26.58-21.26 0-38.75-6.46-51.93-19.11-13.18-12.66-19.9-29.63-19.9-50.9v-1.06c0-21.55 6.72-38.78 19.9-51.97 13.46-13.19 30.42-19.65 51.13-19.65 19.65 0 35.78 6.46 48.15 19.65 12.65 13.19 18.84 29.35 18.84 48.74 0 6.25-.71 12.9-.71 12.9H331.09c1.77 20.62 17.43 33.94 40.78 33.94 12.8 0 24.03-4.31 33.88-13.09zm-61.86-66.06c-6.94 5.4-10.93 12.04-11.97 19.92h72.2c-.3-7.62-3.77-14.25-10.19-19.65-6.74-5.93-14.54-8.89-23.95-8.89-9.95 0-18.84 2.96-26.1 8.61zm389.57 124.9c-13.2 31.21-27.02 41.82-48.21 41.82h-14.69v-28.88h11.88c7.29 0 14.06-2.74 20.52-17.65l6.46-14.93-55.7-137.57h33.1l39.55 99.08L767 101.97h33.09l-66.62 157.21zM251.04 50.02h32.29v187.64h-32.29v-12.49c-7.36 6.79-21.29 15.45-43.32 15.45-19.09 0-35.24-6.73-48.42-20.2-12.92-13.73-19.37-30.42-19.37-50.62 0-20.19 6.45-36.88 19.37-50.35C172.48 105.73 188.62 99 207.72 99c16.05 0 32.65 5.69 43.32 15.26zm2.43 119.8c0-11.86-4.05-21.82-12.12-29.62-7.8-7.81-17.75-11.85-29.33-11.85-11.57 0-20.98 4.04-28.78 11.85-7.53 7.8-11.3 17.76-11.3 29.62 0 11.84 3.78 21.8 11.3 29.61 7.8 7.81 17.21 11.85 28.78 11.85 11.58 0 21.53-4.04 29.33-11.85 8.07-7.81 12.12-17.77 12.12-29.61zm350.06-70.53c28.08 0 47.09 18.99 47.09 54.37v84h-32.29v-79.43c0-18.57-8.88-30.15-24.22-30.15-15.87 0-26.89 12.93-26.89 31.5v78.09H535.2v-79.42c0-18.58-8.87-30.16-24.22-30.16-15.05 0-26.36 13.19-26.36 31.5v78.08h-32.01V101.99h32.01v14.11c5.71-7 17.16-16.82 36.59-16.82 22.98 0 32.82 13.32 36.31 19.99 8.74-9.81 21.48-19.99 46.01-19.99z" />
+                        </svg>
+                            <h1 contenteditable="">Learn Python Programming Masterclass</h1>
+                    </div>
+                    <div class="information00">
+                        <div class="information00-wrapper">
+                            <div id="avatar00" class="information00-avatar"></div>
+                            <div class="information00-meta-info">
+                                <p id="role00" class="information00-role">INSTRUCTOR</p>
+                                <p id="name00" class="information00-name"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-rendered">
+                <span class="spani"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs"
+                    viewBox="0 0 700 700" width="720" height="720">
+                    <defs>
+                        <radialGradient id="ffflux-gradient">
+                            <stop id="first-color" offset="0%" stop-color="hsl(242, 98%, 100%)"></stop>
+                            <stop id="second-color" offset="100%" stop-color="hsl(272, 99%, 54%)"></stop>
+                        </radialGradient>
+                        <filter id="ffflux-filter" x="-20%" y="-20%" width="140%" height="140%"
+                            filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse"
+                            color-interpolation-filters="sRGB">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.005 0.003" numOctaves="2"
+                                seed="2" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%"
+                                result="turbulence"></feTurbulence>
+                            <feGaussianBlur stdDeviation="20 0" x="0%" y="0%" width="100%" height="100%"
+                                in="turbulence" edgeMode="duplicate" result="blur"></feGaussianBlur>
+                            <feBlend mode="color-burn" x="0%" y="0%" width="100%" height="100%"
+                                in="SourceGraphic" in2="blur" result="blend"></feBlend>
+
+                        </filter>
+                    </defs>
+                    <rect width="720" height="720" fill="url(#ffflux-gradient)"
+                        filter="url(#ffflux-filter)"></rect>
+                </svg>
+            </div>
+        </div>
+    </div>
+</template>
+
+    <svg class="hide">
+        <symbol id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 525.1 120">
+            <path
+                d="m45 0c-23 0-45 42.5-45 75 0 24.9 20.1 45 45 45s45-20.1 45-45c0-32.5-22-75-45-75zm0 97.5c-12.4 0-22.5-10.1-22.5-22.5 0-16.7 11.4-37.5 22.5-37.5s22.5 20.8 22.5 37.5c0 12.4-10.1 22.5-22.5 22.5z"
+                fill="currentColor" />
+            <path
+                d="m170.6 96.4h-9.3l-.8-5.4c-3.6 4.4-8.8 6.5-15.5 6.5-6.2 0-11-1.6-14.6-4.9s-5.3-7.5-5.3-12.8 1.8-9.6 5.5-12.9c3.7-3.4 8.6-5.1 14.7-5.1 5.9 0 10.4 1.7 13.7 5v-4.8c0-4.7-1.2-8.2-3.5-10.6s-5.6-3.6-9.8-3.6c-2.6 0-5.1.3-7.5.9s-4.1 1.2-5.1 1.8l-1.7.9-3-9.1c.5-.4 1.3-.8 2.2-1.4.9-.5 3.1-1.2 6.4-2.1s6.9-1.3 10.6-1.3c7.2 0 12.8 2 16.9 6.1s6.1 9.9 6.1 17.5zm-14.2-10.2c2.1-1.8 3.2-4.1 3.2-6.9s-1.1-5.1-3.2-6.9-5-2.7-8.5-2.7c-3.4 0-6.1.9-8.2 2.7s-3.2 4.1-3.2 6.9 1.1 5.1 3.2 6.9 4.8 2.7 8.2 2.7c3.5 0 6.3-.9 8.5-2.7zm22.3-47.6h12.4l12.7 41.2 12.7-41.2h11.7l-19.5 57.7h-10.7zm57.1 21.8c0-7 2.2-12.6 6.5-16.7 4.3-4.2 9.9-6.2 16.7-6.2 6.9 0 12.5 2 16.7 6.1s6.3 9.6 6.3 16.5v14.4c0 7.1-2.2 12.6-6.5 16.8-4.3 4.1-9.9 6.2-16.8 6.2s-12.4-2-16.6-6-6.2-9.5-6.2-16.6v-14.5zm11.5 14.1c0 4 1.1 7.1 3.2 9.3 2.1 2.3 4.9 3.4 8.4 3.4s6.2-1.1 8.3-3.4 3.2-5.4 3.2-9.3v-14.1c0-3.9-1.1-7-3.2-9.3s-4.9-3.4-8.3-3.4c-3.5 0-6.3 1.1-8.4 3.4s-3.2 5.4-3.2 9.3zm82.9-.3h11.1v1.2c0 6.7-2.1 12-6.2 16-4.2 4-9.6 6-16.2 6-6.7 0-12-2-16.1-5.9s-6.1-9.3-6.1-16.2v-15.4c0-6.8 2.1-12.3 6.3-16.3s9.6-6.1 16.2-6.1 11.9 2 16 5.9 6.1 9.2 6.1 16v1h-11.1v-.7c0-3.6-1-6.5-3-8.7s-4.6-3.3-7.9-3.3c-3.4 0-6.1 1.1-8 3.3-2 2.2-3 5.1-3 8.9v15.2c0 3.8 1 6.7 3 8.9s4.7 3.3 8 3.3 5.9-1.1 7.9-3.2 3-5 3-8.6zm26-13.8c0-7 2.2-12.6 6.5-16.7 4.3-4.2 9.9-6.2 16.7-6.2 6.9 0 12.5 2 16.7 6.1s6.3 9.6 6.3 16.5v14.4c0 7.1-2.2 12.6-6.5 16.8-4.3 4.1-9.9 6.2-16.8 6.2s-12.4-2-16.6-6-6.2-9.5-6.2-16.6v-14.5zm11.5 14.1c0 4 1.1 7.1 3.2 9.3 2.1 2.3 4.9 3.4 8.4 3.4s6.2-1.1 8.3-3.4 3.2-5.4 3.2-9.3v-14.1c0-3.9-1.1-7-3.2-9.3s-4.9-3.4-8.3-3.4c-3.5 0-6.3 1.1-8.4 3.4s-3.2 5.4-3.2 9.3zm95.7 21.9h-10.1l-.6-6.8c-3.4 5.3-8.6 7.9-15.5 7.9-6.2 0-11.1-1.9-14.6-5.6s-5.3-8.9-5.3-15.6v-17.2c0-6.8 1.8-12 5.5-15.9 3.6-3.8 8.6-5.7 14.8-5.7s11 2.2 14.3 6.5v-26.5h11.6v78.9zm-11.6-36c0-3.9-1.1-7-3.2-9.3s-4.9-3.4-8.3-3.4c-3.5 0-6.3 1.1-8.4 3.4s-3.2 5.4-3.2 9.3v14.1c0 4 1.1 7.1 3.2 9.3 2.1 2.3 4.9 3.4 8.4 3.4s6.2-1.1 8.3-3.4 3.2-5.4 3.2-9.3zm73 17.7c-.1.5-.2 1.2-.3 2.1s-.7 2.4-1.6 4.6-2.1 4.2-3.5 5.9c-1.5 1.7-3.7 3.3-6.7 4.7s-6.5 2.1-10.5 2.1c-6.9 0-12.4-2-16.6-6s-6.2-9.5-6.2-16.6v-14.5c0-7 2.2-12.6 6.5-16.7 4.3-4.2 9.9-6.2 16.7-6.2s12.2 2 16.3 6.1 6.2 9.6 6.2 16.5v8.3h-34.2v6.1c0 4 1.1 7.1 3.2 9.3 2.1 2.3 4.9 3.4 8.4 3.4 2 0 3.8-.4 5.3-1.2s2.7-1.7 3.4-2.9c.7-1.1 1.3-2.2 1.8-3.3s.8-2 .8-2.9l.1-1.1zm-34-17.3h23.1v-1.5c0-3.9-1.1-7-3.2-9.3s-4.9-3.4-8.3-3.4c-3.5 0-6.3 1.1-8.4 3.4s-3.2 5.4-3.2 9.3z"
+                fill="currentColor" />
+        </symbol>
+    </svg>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script type="module" src="script1.js"></script>
+</body>
+
+</html>
