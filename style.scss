@@ -331,7 +331,7 @@ svg#visual {
     pointer-events: all;
     margin: 0;
     outline: none;
-    font-family: 'Google Sans', 'Inter var',sans-serif;
+    font-family: 'Inter var',sans-serif;
     font-size: 1.5rem;
     letter-spacing: .053px;
     white-space: nowrap;
@@ -365,8 +365,12 @@ svg#visual {
 #image-rendered {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: 20px auto;
     padding-bottom: 20px;
+    max-width: 1280px;
+    img {
+        width: 100%;
+    }
 }
 
 .fab {
@@ -462,7 +466,7 @@ svg#visual {
 }
 
 input[type="text"] {
-    font-family: 'Google Sans', 'Inter var', sans-serif;
+    font-family: 'Inter var', sans-serif;
     max-width: 1200px;
     width: 100%;
     padding: 0.5rem 2rem;
