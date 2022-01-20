@@ -68,7 +68,6 @@ async function capture() {
     
     const temp = document.getElementById("template");
     const radio_value = document.querySelector('input[name="theme"]:checked')?.value || 'light';
-    console.log(radio_value);
     radio_value === 'dark' ? temp.content.children[0].classList.add('WrapperDark') : temp.content.children[0].classList.remove('WrapperDark') 
     const clon = temp.content.cloneNode(true);
     document.querySelector('.Container').innerHTML = '';
@@ -89,7 +88,7 @@ async function capture() {
             nd.innerHTML = '';
             nd.appendChild(img);
             const container = document.querySelector('.Container'); 
-            // container.innerHTML = '';
+            container.innerHTML = '';
             document.querySelector('.modal00').style = `opacity: 0; pointer-events: none;`
             fab.parentNode.style = `visibility: visible; opacity: 1; z-index: 12;`
         })
