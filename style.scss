@@ -323,13 +323,14 @@ svg#visual {
     }
 }
 
-#capture-btn {
+#capture-btn, #random-btn {
     --g-yellow: linear-gradient(30deg, #fc0, #fc0);
     --g-red: linear-gradient(30deg, #f36, #f24);
     --g-blue: linear-gradient(30deg, #0cf, #0af);
     --g-purple: linear-gradient(30deg, #85f, #9966ff);
     pointer-events: all;
     margin: 0;
+    margin-bottom: 10px;
     outline: none;
     font-family: 'Inter var',sans-serif;
     font-size: 1.5rem;
@@ -360,6 +361,12 @@ svg#visual {
     margin-left: 11px;
     margin-right: 5px;
     cursor: pointer;
+}
+
+#random-btn {
+    height: 3rem;
+    font-size: 1.4rem;
+    background: var(--g-purple);
 }
 
 #image-rendered {

@@ -89,7 +89,7 @@ async function capture() {
             nd.innerHTML = '';
             nd.appendChild(img);
             const container = document.querySelector('.Container'); 
-            container.innerHTML = '';
+            // container.innerHTML = '';
             document.querySelector('.modal00').style = `opacity: 0; pointer-events: none;`
             fab.parentNode.style = `visibility: visible; opacity: 1; z-index: 12;`
         })
@@ -98,6 +98,10 @@ async function capture() {
         });
     })
 }
+
+document.querySelector('#random-btn').addEventListener('click', () => {
+    document.getElementById('thumbnail').value = random(titles);
+});
 
 const _serializeToString = XMLSerializer.prototype.serializeToString;
 XMLSerializer.prototype.serializeToString = function (node) {
@@ -112,15 +116,16 @@ XMLSerializer.prototype.serializeToString = function (node) {
 async function _aig(title) {
     
     const box = document.querySelector('h1');
-    const text = title.trim().replace(/[^\w ]/, '').toLowerCase();
-    console.log(title, box);
-    const words = title.trim().split(' ');
-    // console.log(title.match(/highlight\("(.*?)"\)/g));
-    const random_word= title.match(/hl\("(.*?)"\)/g)?.length ? title.match(/hl\("(.*?)"\)/g)[0] : '';
+    const text = title.trim().replace(/[^\w ]/g, '').toLowerCase();
     const input_color = document.querySelector('input[type="color"').value;
     const gradient = `background-image: linear-gradient(${input_color}, ${adjust(input_color, -10)})`
-    const tt = title.replace(/hl\("(.*?)"\)/g, `<span style="${gradient}">$1</span>`);
-    box.innerHTML = tt;
+    
+    // Regex to replace symbol with span for highlight
+    const tt = title.replace(/\*([^\s][^\*]+?[^\s])\*/g, `<span style="${gradient}">$1</span>`);
+    
+    // Regex to replace all html tags except span
+    box.innerHTML = tt.replace(/(<\/?(?:span)[^>]*>)|<[^>]+>/ig, '$1').trim();
+    
     const _color = stringToColor(text);
     const firstc = document.getElementById('first-color');
     const secondc = document.getElementById('second-color');
