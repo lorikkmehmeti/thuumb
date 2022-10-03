@@ -37,6 +37,7 @@ btn.addEventListener('click', () => {
 const fab = document.querySelector('.fab button');
 
 function getUser() {
+    return false;
     return new Promise((resolve) => {
         fetch('https://randomuser.me/api/?results=1')
         .then(response => response.json())
