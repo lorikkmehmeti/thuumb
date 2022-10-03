@@ -46,12 +46,12 @@ function getUser() {
             const name = user.name.first + ' ' + user.name.last;
 //             name00.innerText = name;
 //             avatar00.innerText = initials;
-            const rn = stringToColor(name) || colors[name?.length % colors?.length];
-            const clt = adjust(rn, 30);
-            const clo = adjust(rn, -60);
-            const clc = colorTextFromBg(clo, '#fff', '#000');
-            const clr = clc === '#fff' ? `rgba(255,255,255, .1)` : `rgba(0,0,0, .1)`;
-            avatar00.style = `background-image: linear-gradient(150deg, ${clt} 00%, ${clo} 100%); color: ${clc}; --color: ${clr}`;
+//             const rn = stringToColor(name) || colors[name?.length % colors?.length];
+//             const clt = adjust(rn, 30);
+//             const clo = adjust(rn, -60);
+//             const clc = colorTextFromBg(clo, '#fff', '#000');
+//             const clr = clc === '#fff' ? `rgba(255,255,255, .1)` : `rgba(0,0,0, .1)`;
+//             avatar00.style = `background-image: linear-gradient(150deg, ${clt} 00%, ${clo} 100%); color: ${clc}; --color: ${clr}`;
 
             resolve();
         })
