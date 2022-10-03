@@ -37,7 +37,6 @@ btn.addEventListener('click', () => {
 const fab = document.querySelector('.fab button');
 
 function getUser() {
-    return false;
     return new Promise((resolve) => {
         fetch('https://randomuser.me/api/?results=1')
         .then(response => response.json())
@@ -45,8 +44,8 @@ function getUser() {
             const user = data.results[0];
             const initials = getInitials(user.name.first + ' ' + user.name.last);
             const name = user.name.first + ' ' + user.name.last;
-            name00.innerText = name;
-            avatar00.innerText = initials;
+//             name00.innerText = name;
+//             avatar00.innerText = initials;
             const rn = stringToColor(name) || colors[name?.length % colors?.length];
             const clt = adjust(rn, 30);
             const clo = adjust(rn, -60);
